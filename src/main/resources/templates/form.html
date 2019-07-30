@@ -44,7 +44,7 @@
 
           var erroEmail=document.getElementById("ErroEmail");
 
-          if(document.form.email.value=="" || form.email.value.indexOf("@") == -1 || form.email.value.indexOf(".") == -1 ){
+          if(document.form.email.value=="" && form.email.value.indexOf("@") == -1 && form.email.value.indexOf(".") == -1 ){
            erroEmail.style="color:red";
             erroEmail.innerHTML='preencha corretamente o Email pfvr';
             form.email.focus();
