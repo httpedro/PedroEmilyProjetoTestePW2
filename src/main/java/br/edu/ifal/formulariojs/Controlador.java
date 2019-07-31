@@ -27,7 +27,6 @@ public class Controlador{
             dados+=estudant.getModulo();
             dados+=estudant.getSexo();
             //blob resover no banco 
-            
         }
         return dados;
     }
