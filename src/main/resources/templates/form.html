@@ -5,11 +5,23 @@
 <head>
 <script>
     function validar(){
-      validarNome();
-      validarEmail(); 
-      validarCpf();
-      validarAreasDeAtuacao();
-      validarSenha();
+
+        if(validarNome()==true){
+          validarNome();
+          if(validarEmail()==true){
+            validarEmail(); 
+            if(validarCpf()==true){
+              validarCpf();
+              if(validarAreasDeAtuacao()==true){
+                validarAreasDeAtuacao();
+                if(validarSenha()==true){
+                  validarSenha();
+                }
+              }
+            }
+          }
+        }
+      
     }
         //var nome = document.getElementById("nome");
         //var email = document.getElementById("email");
@@ -239,7 +251,7 @@
      <br><span id="ErroRepetirSenha"></span><br><br>
 
        <i style="margin-right: 3%"></i>
-       <input type="submit" id="gravar" value="Gravar" onclick=" return validar();">
+       <input type="submit" id="gravar" value="Gravar" onclick="validar();">
        <input type="reset" id="limpar" value="Limpar" >
        <br><br>
     </form>
