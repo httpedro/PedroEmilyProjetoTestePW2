@@ -5,6 +5,12 @@
 <head>
 <script>
     function validar(){
+      validarNome();
+      validarEmail(); 
+      validarCpf();
+      validarAreasDeAtuacao();
+      validarSenha();
+    }
         //var nome = document.getElementById("nome");
         //var email = document.getElementById("email");
         //var cpf = document.getElementById("cpf");
@@ -143,8 +149,6 @@
           
         }
 
-        return validarNome(), validarEmail(), validarCpf(), validarAreasDeAtuacao(), validarSenha();
-
         /*if(document.form.email.value=="" || form.email.value.indexOf("@") == -1 || form.email.value.indexOf(".") == -1 ){
             //alert('preencha corretamente o EMAIL pfvr ');
             erroEmail.style="color:red";
@@ -182,7 +186,7 @@
           form.validarRepetirSenha.focus();
           return false;
         }*/
-      }
+      
 </script>
 </head>
 <style>
