@@ -21,11 +21,11 @@ public class Controlador{
 
         Iterable <Aluno> estudantes = estudante.findAll();
         for (Aluno estudant : estudantes) {
-            dados+=estudant.getNome();
-            dados+=estudant.getEmail();
-            dados+=estudant.getCpf();
-            dados+=estudant.getModulo();
-            dados+=estudant.getSexo();
+            dados+=estudant.getNome()+" - ";
+            dados+=estudant.getEmail()+" - ";
+            dados+=estudant.getCpf()+" - ";
+            dados+=estudant.getModulo()+" - ";
+            dados+=estudant.getSexo()+"./";
             //blob resover no banco 
         }
         return dados;

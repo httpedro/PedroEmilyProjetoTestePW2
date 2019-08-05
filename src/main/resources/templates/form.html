@@ -1,231 +1,147 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout">
+  layout:decorate="layout">
 <meta charset="UTF-8" />
-<head>
-<script>
-    function validar(){
 
-        if(validarNome()==true){
-          validarNome();
-          if(validarEmail()==true){
-            validarEmail(); 
-            if(validarCpf()==true){
-              validarCpf();
-              if(validarAreasDeAtuacao()==true){
-                validarAreasDeAtuacao();
-                if(validarSenha()==true){
-                  validarSenha();
-                }
-              }
-            }
-          }
+<head>
+  <script>
+    function validar() {
+
+
+
+      var erroNome = document.getElementById("ErroNome");
+
+      if (document.form.nome.value == "" || document.form.nome.value.length <= 3) {
+        //alert('preencha corretamente o NOME pfvr');
+        erroNome.style = "color:red";
+        erroNome.innerHTML = 'preencha corretamente o NOME pfvr';
+        form.nome.focus();
+        return false;
+      }
+      else {
+        erroNome.innerHTML = '';
+      }
+
+
+        var erroEmail = document.getElementById("ErroEmail");
+
+        if (document.form.email.value == "" || form.email.value.indexOf("@") == -1 || form.email.value.indexOf(".") == -1) {
+          erroEmail.style = "color:red";
+          erroEmail.innerHTML = 'preencha corretamente o Email pfvr';
+          form.email.focus();
+          return false;
         }
+        else {
+          erroEmail.innerHTML = '';
+        }
+
       
-    }
-        //var nome = document.getElementById("nome");
-        //var email = document.getElementById("email");
-        //var cpf = document.getElementById("cpf");
+
+        var erroCpf = document.getElementById("ErroCpf");
+
+        if (document.form.cpf.value == "" || document.form.cpf.value.length < 11 || document.form.cpf.value.length > 11) {
+          erroCpf.style = "color: red";
+          erroCpf.innerHTML = 'preencha corretamente o CPF pfvr';
+          form.cpf.focus();
+          return false;
+        }
+        else {
+          erroCpf.innerHTML = '';
+        }
+
+
         /*var opcaoSexo = document.getElementByName('campoSexo');
         var sexoPreenchido = false;
-        var primeiroModuloValidar = document.getElementById('primeiro').checked;
+
+        for (var i = 0; i < opcaoSexo.length; i++) {
+          if (opcaoSexo[i].checked) {
+            sexoPreenchido = true;
+          }
+        }*/
+
+
+
+       /* var primeiroModuloValidar = document.getElementById('primeiro').checked;
         var SegundoModuloValidar = document.getElementById('segundo').checked;
         var TerceiroModuloValidar = document.getElementById('terceiro').checked;
 
-        var programacaoValidar= document.getElementById('programacao').checked;
-        var redeDeCompuradoresValidar=document.getElementById('redes').checked;
-        var manuntencaoDeComputadoresValidar=document.getElementById('manutencao').checked;
-
-        var validarSenha=document.form.senha.value;
-
-        var validarRepetirSenha=document.form.validar.value;*/ 
-       
-        function validarNome(){
-
-          var erroNome=document.getElementById("ErroNome");
-
-          if(document.form.nome.value=="" || document.form.nome.value.length <= 3 ){
-            //alert('preencha corretamente o NOME pfvr');
-            erroNome.style="color:red";
-            erroNome.innerHTML='preencha corretamente o NOME pfvr';
-            form.nome.focus();
-            return false;
-            }
-          else{
-            erroNome.innerHTML='';
-            return true;
-            }
-        }
-
-
-        function validarEmail(){
-
-          var erroEmail=document.getElementById("ErroEmail");
-
-          if(document.form.email.value=="" && form.email.value.indexOf("@") == -1 && form.email.value.indexOf(".") == -1 ){
-           erroEmail.style="color:red";
-            erroEmail.innerHTML='preencha corretamente o Email pfvr';
-            form.email.focus();
-            return false;
-          }
-          else{
-          erroEmail.innerHTML='';
-          return true;
-          }
-          
-        }
-
-        function validarCpf(){
-
-          var erroCpf=document.getElementById("ErroCpf");
-
-          if(document.form.cpf.value=="" || document.form.cpf.value.length < 11 || document.form.cpf.value.length > 11 ){
-            erroCpf.style="color: red";
-            erroCpf.innerHTML='preencha corretamente o CPF pfvr';
-            form.cpf.focus();
-            return false;
-          }
-          else{
-            erroCpf.innerHTML='';
-          }
-
-        }
-
-        function validarSexo(){
-          var opcaoSexo = document.getElementByName('campoSexo');
-          var sexoPreenchido = false;
-
-          for (var i =0; i< opcaoSexo.length;i++) {
-            if(opcaoSexo[i].checked){
-              sexoPreenchido = true;
-            }
-        }
-
-        }
-        function validarModulo(){
-
-          var primeiroModuloValidar = document.getElementById('primeiro').checked;
-          var SegundoModuloValidar = document.getElementById('segundo').checked;
-          var TerceiroModuloValidar = document.getElementById('terceiro').checked;
-
-          if(primeiroModuloValidar==true || SegundoModuloValidar==true || TerceiroModuloValidar==true){
-            return true;
-          }
-
-        }
-        function validarAreasDeAtuacao(){
-          var programacaoValidar= document.getElementById('programacao').checked;
-          var redeDeCompuradoresValidar=document.getElementById('redes').checked;
-          var manuntencaoDeComputadoresValidar=document.getElementById('manutencao').checked;
-
-          var erroAreasDeAtuacaoVazio = document.getElementById("ErroAreasDeAtuacaoVazio");
-
-          if(programacaoValidar==false && redeDeCompuradoresValidar==false && manuntencaoDeComputadoresValidar==false){
-            erroAreasDeAtuacaoVazio.style="color : red";
-            erroAreasDeAtuacaoVazio.innerHTML='preencha corretamente';
-            return false;
-          }
-          else{
-            erroAreasDeAtuacaoVazio.innerHTML='';
-            return true;
-          }
-
-
-        }
-
-
-        function validarSenha(){
-
-          var erroSenha = document.getElementById("ErroSenha");
-          var erroRepetirSenha = document.getElementById("ErroRepetirSenha");
-
-
-          if( document.form.senha.value == "" || document.form.senha.value <=6){
-            erroSenha.style="color:red";
-            erroSenha.innerHTML='senha deve ter no minimo 6 digitos';
-            return false;
-            }
-            else{
-
-              if(document.form.senha.value != document.form.repetirSenha.value){
-                erroRepetirSenha.style="color:red";
-                erroRepetirSenha.innerHTML='Repita a senha corretamente';
-                return false;
-              }
-              else{
-                erroRepetirSenha.innerHTML='';
-              }
-              erroSenha.innerHTML='';
-            }
-
-          
-        }
-
-        /*if(document.form.email.value=="" || form.email.value.indexOf("@") == -1 || form.email.value.indexOf(".") == -1 ){
-            //alert('preencha corretamente o EMAIL pfvr ');
-            erroEmail.style="color:red";
-            erroEmail.innerHTML='preencha corretamente o Email pfvr';
-            form.email.focus();
-            return false;
-        }
-        if(document.form.email.value=="" && form.email.value.indexOf("@") == -1 && form.email.value.indexOf(".") == -1){
-          erroEmail.innerHTML='';
-        }
-
-        if(document.form.cpf.value=="" || document.form.cpf.value.length < 11 || document.form.cpf.value.length > 11 ){
-            alert('preencha corretamente o CPF  pfvr ');
-            form.cpf.focus();
-            return false;
-        }
-        /*for (var i =0; i< opcaoSexo.length;i++) {
-            if(opcaoSexo[i].checked){
-              sexoPreenchido = true;
-            }
-        }
-
-        if(primeiroModuloValidar==true || SegundoModuloValidar==true || TerceiroModuloValidar==true){
-            return true;
-        }
-        if(programacaoValidar==true || redeDeCompuradoresValidar==true || manuntencaoDeComputadoresValidar==true){
-          return true;
-        }
-
-        if( validarSenha == "" || validarSenha <=3){
-          form.validarSenha.focus();
-          return false;
-        }
-        if(validarSenha != validarRepetirSenha){
-          form.validarRepetirSenha.focus();
+        if (primeiroModuloValidar == false || SegundoModuloValidar == false || TerceiroModuloValidar == false) {
           return false;
         }*/
+
+        var programacaoValidar = document.getElementById('programacao').checked;
+        var redeDeCompuradoresValidar = document.getElementById('redes').checked;
+        var manuntencaoDeComputadoresValidar = document.getElementById('manutencao').checked;
+
+        var erroAreasDeAtuacaoVazio = document.getElementById("ErroAreasDeAtuacaoVazio");
+
+        if (programacaoValidar == false && redeDeCompuradoresValidar == false && manuntencaoDeComputadoresValidar == false) {
+          erroAreasDeAtuacaoVazio.style = "color : red";
+          erroAreasDeAtuacaoVazio.innerHTML = 'preencha corretamente';
+          return false;
+        }
+        else {
+          erroAreasDeAtuacaoVazio.innerHTML = '';
+        }
+
+
+        var erroSenha = document.getElementById("ErroSenha");
+        var erroRepetirSenha = document.getElementById("ErroRepetirSenha");
+
+
+        if (document.form.senha.value == "" || document.form.senha.value <= 6) {
+          erroSenha.style = "color:red";
+          erroSenha.innerHTML = 'senha deve ter no minimo 6 digitos';
+          return false;
+        }
+        else {
+
+          if (document.form.senha.value != document.form.repetirSenha.value) {
+            erroRepetirSenha.style = "color:red";
+            erroRepetirSenha.innerHTML = 'Repita a senha corretamente';
+            return false;
+          }
+          else {
+            erroRepetirSenha.innerHTML = '';
+          }
+          erroSenha.innerHTML = '';
+        }
+
+
       
-</script>
+    }
+
+
+
+
+  </script>
 </head>
 <style>
- .body{
-   background-image: url("image/oreo.png");
- }
+  .body {
+    background-image: url("image/oreo.png");
+  }
 </style>
+
 <body style="background-color:paleturquoise">
 
-	<h2 style=text-align:center;>FORMULÁRIO DE CADASTRO</h2>
+  <h2 style=text-align:center;>FORMULÁRIO DE CADASTRO</h2>
 
-       <form style="text-align:center; border-style:solid; border-width: 2px" name="form" method="POST" action="form">
-   <br>
-        NOME:
-  	<input type="text" id="nome" name="nome" value="" required><br><span id="ErroNome"></span>
- 	  <br> E-MAIL:
-  	<input type="text" id="email" name="email" value="" required><br><span id="ErroEmail"></span>
+  <form style="text-align:center; border-style:solid; border-width: 2px" name="form" method="POST" action="form">
+    <br>
+    NOME:
+    <input type="text" id="nome" name="nome" value=""><br><span id="ErroNome"></span>
+    <br> E-MAIL:
+    <input type="text" id="email" name="email" value=""><br><span id="ErroEmail"></span>
     <br> CPF:
-  	<input type="text" id="cpf" name="cpf" value="" style="width: 16%; " required><br><span id="ErroCpf"></span>
-    <br> 
-    
+    <input type="text" id="cpf" name="cpf" value="" style="width: 16%; "><br><span id="ErroCpf"></span>
+    <br>
+
     SEXO:
-  	<select name="campoSexo">
-    	<option id="masculino" value="">Masculino</option>
-    	<option id="feminino" value="">Feminino</option>
+    <select name="campoSexo">
+      <option id="masculino" value="">Masculino</option>
+      <option id="feminino" value="">Feminino</option>
     </select> <br><br>
-     
+
     MÓDULO:
     <input type="radio" name="modulo" id="primeiro" value="primeiro" checked> Primeiro<br>
     <i style="margin-right: 4.7%"></i>
@@ -234,48 +150,30 @@
     <input type="radio" name="modulo" id="terceiro" value="terceiro"> Terceiro
     <br><br>
 
-    ÁREAS DE ATUAÇÃO 
+    ÁREAS DE ATUAÇÃO
     <input type="checkbox" id="programacao" value="Programação" name="areas"> Programação<br>
     <i style="margin-right: 7.6%"></i>
     PREFERIDAS:
-    <input type="checkbox" id="redes" value="Redes de Computadores"name="areas"> Redes de Computadores<br>
+    <input type="checkbox" id="redes" value="Redes de Computadores" name="areas"> Redes de Computadores<br>
     <i style="margin-right: 16.8%"></i>
     <input type="checkbox" id="manutencao" value=" Manutençao de Computadores" name="areas"> Manutençao de Computadores
     <br><span id="ErroAreasDeAtuacaoVazio"></span><br>
 
     SENHA:
-      <input type="password"  id="senha" name="senha" style="width: 20%;" required>
-      <br><span id="ErroSenha"></span><br>
-      REPETIR SENHA:
-  	 <input type="password" id="repetirSenha" name="repetirSenha" style="width: 15%;" required>
-     <br><span id="ErroRepetirSenha"></span><br><br>
+    <input type="password" id="senha" name="senha" style="width: 20%;">
+    <br><span id="ErroSenha"></span><br>
+    REPETIR SENHA:
+    <input type="password" id="repetirSenha" name="repetirSenha" style="width: 15%;">
+    <br><span id="ErroRepetirSenha"></span><br><br>
 
-       <i style="margin-right: 3%"></i>
-       <input type="submit" id="gravar" value="Gravar" onclick="validar();">
-       <input type="reset" id="limpar" value="Limpar" >
-       <br><br>
-    </form>
-
+    <i style="margin-right: 3%"></i>
+    <input type="submit" id="gravar" value="Gravar" onclick="return validar();">
+    <input type="reset" id="limpar" value="Limpar">
     <br><br>
+  </form>
 
-    <div style="text-align: center;border-style:solid; border-width: 2px">
-      <h2><i th:text = "${concluir}"></i></h2>
-    NOME:
-        <i th:text = "${nome}"></i>
-    <p>
-    EMAIL:
-        <i th:text = "${email}"></i>
-    <p>
-    CPF:
-        <i th:text = "${cpf}"></i>
-    <p>  
-    MÓDULO:  
-        <i th:text = "${modulo}"></i>
-    <p>
-    ÁREAS:
-        <i th:text = "${areas}"></i>
-    </div>
-    
-    
+  <br><br>
+
 </body>
+
 </html>
