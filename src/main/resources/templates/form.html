@@ -12,7 +12,6 @@
       var erroNome = document.getElementById("ErroNome");
 
       if (document.form.nome.value == "" || document.form.nome.value.length <= 3) {
-        //alert('preencha corretamente o NOME pfvr');
         erroNome.style = "color:red";
         erroNome.innerHTML = 'preencha corretamente o NOME pfvr';
         form.nome.focus();
@@ -48,26 +47,6 @@
         else {
           erroCpf.innerHTML = '';
         }
-
-
-        /*var opcaoSexo = document.getElementByName('campoSexo');
-        var sexoPreenchido = false;
-
-        for (var i = 0; i < opcaoSexo.length; i++) {
-          if (opcaoSexo[i].checked) {
-            sexoPreenchido = true;
-          }
-        }*/
-
-
-
-       /* var primeiroModuloValidar = document.getElementById('primeiro').checked;
-        var SegundoModuloValidar = document.getElementById('segundo').checked;
-        var TerceiroModuloValidar = document.getElementById('terceiro').checked;
-
-        if (primeiroModuloValidar == false || SegundoModuloValidar == false || TerceiroModuloValidar == false) {
-          return false;
-        }*/
 
         var programacaoValidar = document.getElementById('programacao').checked;
         var redeDeCompuradoresValidar = document.getElementById('redes').checked;
